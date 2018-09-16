@@ -1,0 +1,94 @@
+//Time complexity of Merge Sort is O(nLogn) in all 3 cases (worst, average and best)
+//as merge sort always divides the array in two halves and take linear time to merge two halves - Divide & Conquer
+
+class Quicksort
+{
+  void quickSort(int a[],int l,int r)
+  {
+    if(l < r)
+    {
+      //find the middle element to divide the array
+      int m = (l+r)/2;
+
+      mergeSort(a,l,m);
+      mergeSort(a,m+1,r);
+      merge(a,l,m,r);
+    }
+  }
+
+  void merge(int a[],int l,int m,int r)
+  {
+    //find the size of left and right subarray
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+    int i,j,k;
+    //create the temp arrays
+    int L[] = new int[n1];
+    int R[] = new int[n2];
+
+    //copy the elements of left and right subarray to Two temp arrays
+    for(i=0; i < n1; i++)
+      L[i] = a[l+i];
+    for(j=0; j<n2; j++)
+      R[j] = a[m+1+j];
+
+    i = j = 0;
+    k = l;
+
+    //merge the elements of temp arrays after comparison
+    while(i < n1 && j < n2)
+    {
+      if(L[i] <= R[j])
+      {
+        a[k] = L[i];
+        i++;
+      }
+      else
+      {
+        a[k] = R[j];
+        j++;
+      }
+      k++;
+    }
+
+    //copy rest of the elements of left temp array if any
+    while(i < n1)
+    {
+      a[k] = L[i];
+      k++;
+      i++;
+    }
+    //copy rest of the elements of right temp array if any
+    while(j < n2)
+    {
+      a[k] = R[j];
+      k++;
+      j++;
+    }
+  }
+
+  //print the array
+  void printArray(int a[])
+  {
+    for(int i=0; i < a.length; i++)
+      System.out.print(a[i] + " ");
+  }
+
+  //driver method
+  public static void main(String args[])
+  {
+    int a[] = {38, 27, 43, 3, 9, 82, 10};
+    int len = a.length;
+    Mergesort obj = new Mergesort();
+
+    System.out.println("Original Array: ");
+    obj.printArray(a);
+
+    obj.mergeSort(a,0,len-1);
+
+    System.out.println("\n\nSorted Array: ");
+    obj.printArray(a);
+    System.out.println("\n");
+  }
+}
