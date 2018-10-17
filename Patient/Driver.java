@@ -10,7 +10,11 @@ class Driver
     //Patients
     Patient ron, brad, julia;
     List<Patient> patients;
-    Baby neal;
+    Date birthday = new Date();
+    Baby neal = new Baby("Benjamin Potter", birthday, "Europe", "Italy");
+
+    //Birthday converted to Timezones
+    System.out.println("After Timezone Conversion: " + neal.convertToTimeZone("Asia", "China"));
 
     //Addressess
     Address add1 = new Address("1942, Baker Drive","Lenexa","Kansas",66219);
@@ -18,9 +22,9 @@ class Driver
     Address add3 = new Address("1991, Crestline Dr", "Olathe", "Kansas",66278);
 
     //Allergies
-    Allergy alg1 = new Allergy("Contact Dermatitis", Severity.LOW);
-    Allergy alg2 = new Allergy("Dust", Severity.HIGH);
-    Allergy alg3 = new Allergy("Cat", Severity.MEDIUM);
+    Allergy alg1 = new Allergy("Contact Dermatitis", Severity.LOW, "Itchiness");
+    Allergy alg2 = new Allergy("Dust", Severity.HIGH, "Redness");
+    Allergy alg3 = new Allergy("Cat", Severity.MEDIUM, "Coughing");
     List<Allergy> allergies = new ArrayList<Allergy>();
     allergies.add(alg1);
     allergies.add(alg2);
@@ -171,6 +175,7 @@ class Driver
     System.out.println("\n\n Search Allergy Based on Symptoms");
 
     //Search Allergy Based on Symptoms - Reference: Main.java
+    Allergy.searchAllergy(allergies, "Itchiness");
 
   }
 }

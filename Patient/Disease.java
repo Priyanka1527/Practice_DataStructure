@@ -38,4 +38,15 @@ class Disease
   {
     return recordTime;
   }
+
+  public String getFullSymptoms()
+  {
+    String symp_list = String.format("The Symptoms of the Disease %s are: \n", this.getDname());
+    for(int i = 0; i < this.symptoms.size(); i++)
+    {
+      symp_list += this.symptoms.get(i);
+      symp_list += ", ";
+    }
+    return symp_list;
+  }
 }

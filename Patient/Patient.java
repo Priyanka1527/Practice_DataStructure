@@ -88,7 +88,7 @@ class Patient extends Person
 
     for(int i=0; i<this.getAllergy().size(); i++)
     {
-      fullAllergies += String.format("%s with a severity %s", this.getAllergy().get(i).getAllergyName(), this.getAllergy().get(i).getSeverity());
+      fullAllergies += String.format("%s with a severity %s and symptom %s", this.getAllergy().get(i).getAllergyName(), this.getAllergy().get(i).getSeverity(), this.getAllergy().get(i).getSymptom());
 
       fullAllergies += "\n";
     }
@@ -103,7 +103,7 @@ class Patient extends Person
 
     for(int i=0; i<this.getDisease().size(); i++)
     {
-      fullDiseases += String.format("Disease: %s", this.getDisease().get(i).getDname()); //need to print the symptoms and recorded time
+      fullDiseases += String.format("Disease: %s and Symptoms: %s", this.getDisease().get(i).getDname(), this.getDisease().get(i).getFullSymptoms()); //need to print the symptoms and recorded time
 
       fullDiseases += "\n";
     }
