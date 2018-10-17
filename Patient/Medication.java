@@ -11,24 +11,24 @@ class Medication
     this.frequency = frequency;
   }
 
-  public void setMname(String mname)
-  {
-    this.mname = mname;
-  }
   public String getMname()
   {
     return mname;
   }
-
-  public void etDosage(String dosage)
+  public void setMname(String mname)
   {
-    this.dosage = dosage;
+    this.mname = mname;
   }
+
   public String getDosage()
   {
     return dosage;
   }
-
+  public void setDosage(String dosage)
+  {
+    this.dosage = dosage;
+  }
+  
   public void getFrequency(int frequency)
   {
     this.frequency = frequency;

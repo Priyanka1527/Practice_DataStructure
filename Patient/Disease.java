@@ -14,22 +14,24 @@ class Disease
     this.recordTime = new Timestamp(System.currentTimeMillis());
   }
 
-  public void setDname(String dname)
-  {
-    this.dname = dname;
-  }
   public String getDname()
   {
     return dname;
   }
 
-  public void addSymptom(String symptom)
+  public void setDname(String dname)
   {
-    this.symptoms.add(symptom);
+    this.dname = dname;
   }
+
   public ArrayList<String> getSymptoms()
   {
     return symptoms;
+  }
+
+  public void setSymptom(String symptom)
+  {
+    this.symptoms.add(symptom);
   }
 
   public Timestamp getRecordTime()

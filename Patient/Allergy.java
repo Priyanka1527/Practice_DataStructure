@@ -1,69 +1,33 @@
 /*Create an Allergy class with symptoms and severity as properties. Search allergy based on symptoms.  */
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Allergy
+class Allergy
 {
-  private String symptom;
-  private String reporter;
+  private String allergyName;
   private Severity severity;
-  private String diseaseName;
-  
-  public Allergy(String symptom, String reporter, Severity severity, String diseaseName)
+
+  public Allergy(String allergyName, Severity severity)
   {
-   	this.symptom = symptom;
-    this.reporter=reporter;
-    this.severity=severity;
-    this.diseaseName=diseaseName;
+    this.allergyName = allergyName;
+    this.severity = severity;
   }
-  
-  public void setSymptom(String symptom)
+
+  public Severity getSeverity()
   {
-    this.symptom = symptom;
+    return severity;
   }
-  
-  public String getSymptom()
-  {
-    return this.symptom;
-  }
-  
-  public void setReporter(String reporter)
-  {
-    this.reporter = reporter;
-  }
-  
-  public String getReporter()
-  {
-    return this.reporter;
-  }
-  
+
   public void setSeverity(Severity severity)
   {
     this.severity = severity;
   }
-  
-  public Severity getSeverity()
+
+  public String getAllergyName()
   {
-    return this.severity;
+    return allergyName;
   }
-  
-  public void setDiseaseName(String diseaseName)
+
+  public void setAllergyName(String allergyName)
   {
-    this.diseaseName = diseaseName;
+    this.allergyName = allergyName;
   }
-  
-  public String getDiseaseName()
-  {
-    return this.diseaseName;
-  }
-  
 }
-
-enum Severity
-{
-  HIGH, MEDIUM, LOW;
-}
-
-
-

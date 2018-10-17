@@ -1,13 +1,13 @@
 class Person
 {
-  private String name, phone, email;
+  private String name;
+  private int age;
   private Address address;
 
-  public Person(String name, String phone, String email, Address address)
+  public Person(String name, int age, Address address)
   {
     this.name = name;
-    this.phone = phone;
-    this.email = email;
+    this.age = age;
     this.address = address;
   }
 
@@ -20,30 +20,26 @@ class Person
     this.name = name;
   }
 
-  public String getPhone()
+  public int getAge()
   {
-    return phone;
+    return age;
   }
-  public void setPhone(String phone)
+  public void setAge(int age)
   {
-    this.phone = phone;
-  }
-
-  public String getEmail()
-  {
-    return email;
-  }
-  public void setEmail(String email)
-  {
-    this.email = email;
+    this.age = age;
   }
 
   public Address getAddress()
   {
     return address;
   }
-  public void setName(Address address)
+  public void setAddress(Address address)
   {
     this.address = address;
+  }
+
+  public String getFullAddress()
+  {
+    return address.getAddressLine() + ", " + address.getCity() + ", " + address.getState() + " - " + address.getZip();
   }
 }
