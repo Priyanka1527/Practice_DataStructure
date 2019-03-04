@@ -1,4 +1,5 @@
-/* Convert infix to postfix and evaluate postfix expression. */
+/* Convert infix to postfix and evaluate postfix expression.
+Postfix expressions are evaluated faster compared to Infix */
 
 import java.util.*;
 
@@ -6,8 +7,72 @@ class InfixToPostfix
 {
 	public static void main(String args[])
 	{
-		String exp = "a+b*(c^d-e)^(f+g*h)-i";
-		System.out.println(convert(exp));
+		String exp = "t-g+t-w";
+		String postFix = convert(exp);
+		System.out.println("Postfix: " + postFix);
+
+		System.out.println("Evaluated Result: " + evaluatePostfix(postFix));
+	}
+
+	static int evaluatePostfix(String postfix)
+	{
+		HashMap<Character,Integer> map = new HashMap<>();
+		map.put('g', 2);
+		map.put('p', 3);
+		map.put('t', 1);
+		map.put('w', 2);
+
+		Stack<Integer> stack = new Stack<Integer>();
+		//use 'C' - 'A' for alphabetical value
+
+		for(int i=0; i<postfix.length(); i++)
+		{
+			char ch = postfix.charAt(i);
+
+			if(Character.isLetterOrDigit(ch))
+			{
+				if(map.containsKey(ch))
+				{
+					int dig = map.get(ch);
+					stack.push(dig);
+				}
+				else
+				{
+					System.out.println("Can't proceed...INVALID!");
+					System.exit(0);
+				}
+			}
+			else
+			{
+				int val1 = stack.pop();
+				int val2 = stack.pop();
+
+				switch(ch)
+				{
+					case '+':
+						stack.push(val2+val1);
+						break;
+
+					case '-':
+						stack.push(val2-val1);
+						break;
+
+					case '*':
+						stack.push(val2*val1);
+						break;
+
+					case '/':
+						stack.push(val2/val1);
+						break;
+
+					case '%':
+						stack.push(val2%val1);
+				}
+			}
+		}
+
+		return stack.pop();
+
 	}
 
 	static int calcPrec(char ch)
